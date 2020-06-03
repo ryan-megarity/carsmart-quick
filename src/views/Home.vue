@@ -1,18 +1,31 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="center-block text-center">
+    <div v-if="!isMobile()">
+      <b-img
+      :src="require('../assets/CarsmartLandingPageDesign.jpg')"
+      alt="landing page desktop image" fluid-grow>
+      </b-img>
+    </div>
+    <div v-else>
+      <b-img
+      :src="require('../assets/CarsmartLandingPageDesignMobile2.jpg')"
+      alt="landing page mobile image" fluid-grow>
+  </b-img>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld,
+  methods: {
+    isMobile: () => {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true;
+      }
+      return false;
+    },
   },
 };
 </script>
